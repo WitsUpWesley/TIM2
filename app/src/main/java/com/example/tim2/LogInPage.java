@@ -2,6 +2,7 @@ package com.example.tim2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +31,13 @@ public class LogInPage extends AppCompatActivity {
                 String sUser = username.getText().toString().trim();
                 String sPass = password.getText().toString().trim();
                 login(LogInPage.this, sUser, sPass);
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LogInPage.this, SignUp.class));
             }
         });
     }

@@ -39,6 +39,9 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                 }
 
+                else if(uName.isEmpty()||pWord.isEmpty()||cpWprd.isEmpty()){
+                    Toast.makeText(SignUp.this, "Missing Fields", Toast.LENGTH_SHORT).show();
+                }
                 else{
                     signUp(SignUp.this,cv);
                 }

@@ -63,7 +63,7 @@ public class SignUp extends AppCompatActivity {
                 }
 
                 else{
-                    Toast.makeText(c, "Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c, "Usedname already exists", Toast.LENGTH_SHORT).show();
                 }
             }
         }.execute();

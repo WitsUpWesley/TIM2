@@ -42,7 +42,7 @@ public class LogInPage extends AppCompatActivity {
         });
     }
 
-    public static void login(final Context c , String username, String password){
+    public void login(final Context c , final String username, String password){
         ContentValues cv = new ContentValues();
 
         cv.put("username", username);
@@ -54,6 +54,9 @@ public class LogInPage extends AppCompatActivity {
 
                 if(output.equals("1")){
                     Toast.makeText(c, "Successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent( LogInPage.this, HomePage.class);
+                    intent.putExtra("username",username);
+                    startActivity(intent);
                 }
 
                 else{
@@ -63,5 +66,10 @@ public class LogInPage extends AppCompatActivity {
             }
         }.execute();
 
+    }
+
+    public void signUp(View v){
+        Intent intent = new Intent( LogInPage.this, SignUp.class);
+        startActivity(intent);
     }
 }

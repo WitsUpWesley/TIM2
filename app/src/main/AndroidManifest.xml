@@ -23,6 +23,7 @@
         <activity android:name=".displayShops"/>
         <activity android:name=".Shop"/>
         <activity android:name=".createShop"/>
+        <activity android:name=".SignUp"/>
     </application>
 
 </manifest>

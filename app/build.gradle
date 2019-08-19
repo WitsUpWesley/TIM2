@@ -13,7 +13,7 @@ apply plugin: 'jacoco-android'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.witsup"
+        applicationId "com.example.tim2"
         minSdkVersion 21
         targetSdkVersion 28
         multiDexEnabled true

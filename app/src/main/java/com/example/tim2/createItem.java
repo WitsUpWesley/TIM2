@@ -1,5 +1,6 @@
 package com.example.tim2;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -38,10 +39,27 @@ public class createItem extends AppCompatActivity {
         }
         else{
             int iQuantity = Integer.parseInt(sQuantity);
-            // insert query
+            ContentValues cv = new ContentValues();
+            cv.put("shopName",sShopName);
+            cv.put("itemName", sItemName);
+            cv.put("Description",sItemDesc);
+            cv.put("itemQuantity",iQuantity);
+            addItem(cv);
+            shopName.getText().clear();
+            itemDesc.getText().clear();
+            itemName.getText().clear();
+            quantity.getText().clear();
             Toast.makeText(createItem.this, "The item has been added", Toast.LENGTH_SHORT).show();
         }
 
 
+    }
+
+    public static void addItem(ContentValues cv){
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addItem.php", cv) {
+            @Override
+            protected void onPostExecute(String output) {
+            }
+        }.execute();
     }
 }

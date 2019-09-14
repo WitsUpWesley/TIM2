@@ -78,7 +78,6 @@ public class displayShops extends AppCompatActivity {
         Intent viewAnswersIntent = new Intent(this, Shop.class);
         viewAnswersIntent.putExtra("shop", s);
         startActivity(viewAnswersIntent);
-
     }
 
 }

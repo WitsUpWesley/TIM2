@@ -24,6 +24,8 @@
         <activity android:name=".Shop"/>
         <activity android:name=".createShop"/>
         <activity android:name=".SignUp"/>
+        <activity android:name=".ownShop"/>
+        <activity android:name=".createItem"/>
     </application>
 
 </manifest>

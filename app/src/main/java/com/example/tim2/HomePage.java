@@ -48,5 +48,10 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void viewOwnShop(View v){
+        Intent intent = new Intent( HomePage.this, ownShop.class);
+        intent.putExtra("username",username);
+        startActivity(intent);
+    }
 }
 

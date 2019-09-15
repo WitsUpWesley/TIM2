@@ -38,6 +38,14 @@ public class ownShop extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void viewItems(View v){
+        Intent intent = new Intent( ownShop.this, displayItems.class);
+        intent.putExtra("username",username);
+        startActivity(intent);
+    }
+
+
+
 
 
 }

@@ -68,8 +68,4 @@ public class LogInPage extends AppCompatActivity {
 
     }
 
-    public void signUp(View v){
-        Intent intent = new Intent( LogInPage.this, SignUp.class);
-        startActivity(intent);
-    }
 }

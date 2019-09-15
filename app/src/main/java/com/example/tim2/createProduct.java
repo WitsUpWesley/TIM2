@@ -1,9 +1,11 @@
 package com.example.tim2;
 
 import android.content.ContentValues;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -11,27 +13,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class displayItems extends AppCompatActivity {
+public class createProduct extends AppCompatActivity {
     String username;
+    CheckBox c;
 
-    //@SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        setTitle("Items");
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.createproduct);
+        setTitle("Create Product");
         Bundle extras = getIntent().getExtras();
-
-        setContentView(R.layout.displayshops);
 
         username = extras.getString("username");
 
-        ContentValues c = new ContentValues();
-        c.put("shopName","Caves"); // need to get this value later
+        ContentValues cv = new ContentValues();
+        cv.put("shopName","Caves");
 
         LinearLayout holder = findViewById(R.id.productHolder);
-        //System.out.println("PROBLEM AREA");
-        displayItems(holder,c);
+        c = findViewById(R.id.checkBox);
+
+        displayItems(holder,cv);
+
 
     }
 
@@ -46,19 +48,10 @@ public class displayItems extends AppCompatActivity {
                         final JSONObject shop = shops.getJSONObject(i);
                         String tester = shop.toString();
                         System.out.println(tester);
-                        View v = View.inflate(holder.getContext(), R.layout.shop_item_larger, null);
+                        View v = View.inflate(holder.getContext(), R.layout.item, null);
 
-                        ((TextView) v.findViewById(R.id.displayedItem)).setText("Name: "+ shop.getString("itemName") + "\n" +"Desc: "+ shop.get("itemDescription") + "\n" +"Quantity:" + shop.get("itemQuantity"));
+                        ((TextView) v.findViewById(R.id.itemShown)).setText("Name: "+ shop.getString("itemName") + "\n" +"Desc: "+ shop.get("itemDescription") + "\n" +"Quantity:" + shop.get("itemQuantity"));
                         System.out.println("working");
-                        /*final String q =((TextView) v.findViewById(R.id.displayedShop)).getText().toString();
-                        v.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                openViewAnswersPage(q);
-
-                            }
-                        });*/
 
                         holder.addView(v);
                     }
@@ -69,4 +62,3 @@ public class displayItems extends AppCompatActivity {
         }.execute();
     }
 }
-

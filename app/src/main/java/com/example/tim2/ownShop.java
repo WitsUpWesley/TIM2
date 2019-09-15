@@ -29,6 +29,18 @@ public class ownShop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ownshop);
 
+        Button createProductButton = findViewById(R.id.btnCreateProduct);
+
+        createProductButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ownShop.this, createProduct.class);
+                intent.putExtra("username",username);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -43,10 +55,6 @@ public class ownShop extends AppCompatActivity {
         intent.putExtra("username",username);
         startActivity(intent);
     }
-
-
-
-
 
 }
 

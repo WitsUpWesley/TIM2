@@ -10,14 +10,14 @@
     tools:context="com.example.tim2.ownShop">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnCreateProduct"
         android:layout_width="191dp"
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Create Shop"
+        android:text="Create Product"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

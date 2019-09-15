@@ -28,6 +28,7 @@ public class HomePage extends AppCompatActivity {
             username = getIntent().getExtras().getString("username");
         }
         setTitle("Home");
+
     }
 
 

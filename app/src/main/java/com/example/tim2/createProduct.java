@@ -22,7 +22,6 @@ import java.util.ArrayList;
 public class createProduct extends AppCompatActivity {
     String username;
     String proName;
-    EditText productName;
     ArrayList<String> items = new ArrayList<>();
 
     @Override
@@ -39,13 +38,7 @@ public class createProduct extends AppCompatActivity {
 
         LinearLayout holder = findViewById(R.id.productHolder);
 
-        productName = findViewById(R.id.productName_editText);
-        proName = productName.getText().toString().trim();
-
         final ContentValues cont = new ContentValues();
-        cont.put("shopName","Caves");
-        cont.put("productName", proName);
-        cont.put("numItemsNeeded","2");
 
         Button createProduct = findViewById(R.id.btnCreateProduct);
 
@@ -53,8 +46,18 @@ public class createProduct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                addProduct(items, cont);
+                EditText productName = findViewById(R.id.productName_editText);
+                proName = productName.getText().toString().trim();
 
+                cont.put("shopName","Caves");
+                cont.put("productName", proName);
+                cont.put("numItemsNeeded","2");
+
+                for(int i = 0; i < items.size(); i++){
+
+                    cont.put("itemName", items.get(i));
+                    addProduct(items, cont);
+                }
             }
         });
 
@@ -73,31 +76,27 @@ public class createProduct extends AppCompatActivity {
         }
 
 
-        for(int i = 0; i < items.size(); i++){
+/*        for(int i = 0; i < items.size(); i++){
             System.out.println(items.get(i));
-        }
+        }*/
 
     }
 
     public void addProduct(ArrayList items, ContentValues cont){
 
-        for(int i = 0; i < items.size(); i++){
+                new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addProduct.php", cont) {
+                    @Override
+                    protected void onPostExecute(String output) {
 
-            cont.put("itemName", items.get(i).toString());
-            new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addProduct.php", cont) {
-                @Override
-                protected void onPostExecute(String output) {
+                        if(output.equals("1")){
+                            Toast.makeText(createProduct.this,"Product added", Toast.LENGTH_SHORT).show();
+                        }
 
-                    if(output.equals("1")){
-                        Toast.makeText(createProduct.this,"Product added", Toast.LENGTH_SHORT).show();
+                        else{
+                            Toast.makeText(createProduct.this,"Failed", Toast.LENGTH_SHORT).show();
+                        }
                     }
-
-                    else{
-                        Toast.makeText(createProduct.this,"Failed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }.execute();
-        }
+                }.execute();
 
     }
 
@@ -119,7 +118,8 @@ public class createProduct extends AppCompatActivity {
                         System.out.println("working");
 
                         final String itemadded = shop.getString("itemName");
-                       final CheckBox  c = v.findViewById(R.id.checkBox);
+
+                        final CheckBox  c = v.findViewById(R.id.checkBox);
 
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override

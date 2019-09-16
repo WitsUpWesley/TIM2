@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/itemShown"
-        android:layout_width="354dp"
-        android:layout_height="88dp"
+        android:layout_width="295dp"
+        android:layout_height="94dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -18,23 +18,39 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="63dp"
-        android:layout_height="72dp"
+        android:layout_width="42dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/itemShown"
+        app:layout_constraintEnd_toStartOf="@+id/itemsNeeded_editText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/itemShown"
+        app:layout_constraintTop_toTopOf="@+id/itemShown"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/itemsNeeded_editText"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/itemShown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@+id/itemShown"
+        app:layout_constraintTop_toTopOf="@+id/itemShown"
+        app:layout_constraintVertical_bias="0.538" />
 
 </android.support.constraint.ConstraintLayout>

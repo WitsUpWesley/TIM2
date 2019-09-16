@@ -19,14 +19,17 @@ import org.json.JSONObject;
 import static android.view.View.VISIBLE;
 
 public class ownShop extends AppCompatActivity {
-    String username;
+    String username,shopName;
 
     //@SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Your shop"); // get it from a query maybe
+
         Bundle extras = getIntent().getExtras();
+
         username = extras.getString("username");
+        shopName = extras.getString("shopName");
+        setTitle(shopName); // get it from a query maybe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ownshop);
 

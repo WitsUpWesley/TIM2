@@ -17,8 +17,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class createProduct extends AppCompatActivity {
     String username;
+    String proName;
+    EditText productName;
+    ArrayList<String> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +38,22 @@ public class createProduct extends AppCompatActivity {
         cv.put("shopName","Caves");
 
         LinearLayout holder = findViewById(R.id.productHolder);
-        EditText productName = findViewById(R.id.productName_editText);
+
+        productName = findViewById(R.id.productName_editText);
+        proName = productName.getText().toString().trim();
+
+        final ContentValues cont = new ContentValues();
+        cont.put("shopName","Caves");
+        cont.put("productName", proName);
+        cont.put("numItemsNeeded","2");
+
         Button createProduct = findViewById(R.id.btnCreateProduct);
 
         createProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                addProduct(items, cont);
 
             }
         });
@@ -47,11 +62,43 @@ public class createProduct extends AppCompatActivity {
 
     }
 
-    public void onCheckBox(View view, CheckBox c){
+    public void onCheckBox(View view, CheckBox c, String itemadded){
 
         if(c.isChecked()){
-            Toast.makeText(createProduct.this, "Checked", Toast.LENGTH_SHORT).show();
+            items.add(itemadded);
         }
+
+        else if(!c.isChecked()){
+            items.remove(itemadded);
+        }
+
+
+        for(int i = 0; i < items.size(); i++){
+            System.out.println(items.get(i));
+        }
+
+    }
+
+    public void addProduct(ArrayList items, ContentValues cont){
+
+        for(int i = 0; i < items.size(); i++){
+
+            cont.put("itemName", items.get(i).toString());
+            new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addProduct.php", cont) {
+                @Override
+                protected void onPostExecute(String output) {
+
+                    if(output.equals("1")){
+                        Toast.makeText(createProduct.this,"Product added", Toast.LENGTH_SHORT).show();
+                    }
+
+                    else{
+                        Toast.makeText(createProduct.this,"Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }.execute();
+        }
+
     }
 
 
@@ -71,13 +118,15 @@ public class createProduct extends AppCompatActivity {
                         ((TextView) v.findViewById(R.id.itemShown)).setText("Name: "+ shop.getString("itemName") + "\n" +"Desc: "+ shop.get("itemDescription") + "\n" +"Quantity:" + shop.get("itemQuantity"));
                         System.out.println("working");
 
+                        final String itemadded = shop.getString("itemName");
                        final CheckBox  c = v.findViewById(R.id.checkBox);
 
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
-                                onCheckBox(v,c);
+                                onCheckBox(v,c,itemadded);
+
                             }
                         });
 

@@ -38,8 +38,6 @@ public class createProduct extends AppCompatActivity {
 
         LinearLayout holder = findViewById(R.id.productHolder);
 
-        final ContentValues cont = new ContentValues();
-
         Button createProduct = findViewById(R.id.btnCreateProduct);
 
         createProduct.setOnClickListener(new View.OnClickListener() {
@@ -49,11 +47,13 @@ public class createProduct extends AppCompatActivity {
                 EditText productName = findViewById(R.id.productName_editText);
                 proName = productName.getText().toString().trim();
 
-                cont.put("shopName","Caves");
-                cont.put("productName", proName);
-                cont.put("numItemsNeeded","2");
-
                 for(int i = 0; i < items.size(); i++){
+
+                    final ContentValues cont = new ContentValues();
+
+                    cont.put("shopName","Caves");
+                    cont.put("productName", proName);
+                    cont.put("numItemsNeeded","2");
 
                     cont.put("itemName", items.get(i));
                     addProduct(items, cont);
@@ -74,12 +74,6 @@ public class createProduct extends AppCompatActivity {
         else if(!c.isChecked()){
             items.remove(itemadded);
         }
-
-
-/*        for(int i = 0; i < items.size(); i++){
-            System.out.println(items.get(i));
-        }*/
-
     }
 
     public void addProduct(ArrayList items, ContentValues cont){
@@ -99,7 +93,6 @@ public class createProduct extends AppCompatActivity {
                 }.execute();
 
     }
-
 
     public void displayItems(final LinearLayout holder, ContentValues cv) {
 

@@ -46,8 +46,18 @@ public class createProduct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                addProduct(items, cont);
+                EditText productName = findViewById(R.id.productName_editText);
+                proName = productName.getText().toString().trim();
 
+                cont.put("shopName","Caves");
+                cont.put("productName", proName);
+                cont.put("numItemsNeeded","2");
+
+                for(int i = 0; i < items.size(); i++){
+
+                    cont.put("itemName", items.get(i));
+                    addProduct(items, cont);
+                }
             }
         });
 
@@ -66,38 +76,27 @@ public class createProduct extends AppCompatActivity {
         }
 
 
-        for(int i = 0; i < items.size(); i++){
+/*        for(int i = 0; i < items.size(); i++){
             System.out.println(items.get(i));
-        }
+        }*/
 
     }
 
     public void addProduct(ArrayList items, ContentValues cont){
 
-        EditText productName = findViewById(R.id.productName_editText);
-        proName = productName.getText().toString().trim();
+                new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addProduct.php", cont) {
+                    @Override
+                    protected void onPostExecute(String output) {
 
-        cont.put("shopName","Caves");
-        cont.put("productName", proName);
-        cont.put("numItemsNeeded","2");
+                        if(output.equals("1")){
+                            Toast.makeText(createProduct.this,"Product added", Toast.LENGTH_SHORT).show();
+                        }
 
-        for(int i = 0; i < items.size(); i++){
-
-            cont.put("itemName", items.get(i).toString());
-            new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addProduct.php", cont) {
-                @Override
-                protected void onPostExecute(String output) {
-
-                    if(output.equals("1")){
-                        Toast.makeText(createProduct.this,"Product added", Toast.LENGTH_SHORT).show();
+                        else{
+                            Toast.makeText(createProduct.this,"Failed", Toast.LENGTH_SHORT).show();
+                        }
                     }
-
-                    else{
-                        Toast.makeText(createProduct.this,"Failed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }.execute();
-        }
+                }.execute();
 
     }
 

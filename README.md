@@ -4,5 +4,7 @@ TIM, Tiny Inventory Manager, is an app that allows users to both order from, and
 
 Sprint 1: Login Screen including create new user as well as accessing the homescreen and displaying shops.
 
+Sprint 2: creating items, viewing items, create products, view products, create new shop
+
 [![Build Status](https://travis-ci.org/WitsUpWesley/TIM2.svg?branch=master)](https://travis-ci.org/WitsUpWesley/TIM2)
 [![codecov](https://codecov.io/gh/WitsUpWesley/TIM2/branch/master/graph/badge.svg)](https://codecov.io/gh/WitsUpWesley/TIM2)

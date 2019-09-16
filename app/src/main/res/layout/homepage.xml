@@ -35,6 +35,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:onClick="viewOwnShop"
         android:text="View Own Shop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +45,7 @@
         app:layout_constraintVertical_bias="0.592" />
 
     <Button
-        android:id="@+id/btnCreateShop"
+        android:id="@+id/btnCreateItem"
         android:layout_width="227dp"
         android:layout_height="84dp"
         android:layout_marginStart="92dp"
@@ -52,7 +53,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="createShop"
-        android:text="CreateShop"
+        android:text="Create Shop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

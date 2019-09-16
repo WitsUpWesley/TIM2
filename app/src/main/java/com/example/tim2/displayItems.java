@@ -1,7 +1,6 @@
 package com.example.tim2;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +11,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class displayShops extends AppCompatActivity {
+public class displayItems extends AppCompatActivity {
     String username;
 
     //@SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setTitle("Shops");
+        setTitle("Items");
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
 
@@ -28,28 +27,30 @@ public class displayShops extends AppCompatActivity {
         username = extras.getString("username");
 
         ContentValues c = new ContentValues();
+        c.put("shopName","Caves"); // need to get this value later
 
         LinearLayout holder = findViewById(R.id.productHolder);
-        System.out.println("PROBLEM AREA");
-        displayShops(holder,c);
+        //System.out.println("PROBLEM AREA");
+        displayItems(holder,c);
 
     }
 
-    public void displayShops(final LinearLayout holder, ContentValues cv) {
+    public void displayItems(final LinearLayout holder, ContentValues cv) {
 
-
-        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShops.php", cv) {
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getItemFromShopX.php", cv) {
             @Override
             protected void onPostExecute(String output) {
                 try {
                     JSONArray shops = new JSONArray(output);
                     for (int i = 0; i < shops.length(); i++) {
                         final JSONObject shop = shops.getJSONObject(i);
-                        View v = View.inflate(holder.getContext(), R.layout.shop_item, null);
+                        String tester = shop.toString();
+                        System.out.println(tester);
+                        View v = View.inflate(holder.getContext(), R.layout.shop_item_larger, null);
 
-                        ((TextView) v.findViewById(R.id.displayedShop)).setText(shop.getString("Shop Name"));
-
-                        final String q =((TextView) v.findViewById(R.id.displayedShop)).getText().toString();
+                        ((TextView) v.findViewById(R.id.displayedItem)).setText("Name: "+ shop.getString("itemName") + "\n" +"Desc: "+ shop.get("itemDescription") + "\n" +"Quantity:" + shop.get("itemQuantity"));
+                        System.out.println("working");
+                        /*final String q =((TextView) v.findViewById(R.id.displayedShop)).getText().toString();
                         v.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -57,7 +58,7 @@ public class displayShops extends AppCompatActivity {
                                 openViewAnswersPage(q);
 
                             }
-                        });
+                        });*/
 
                         holder.addView(v);
                     }
@@ -67,13 +68,5 @@ public class displayShops extends AppCompatActivity {
             }
         }.execute();
     }
-
-    private void openViewAnswersPage(String s){
-
-        Intent viewAnswersIntent = new Intent(this, Shop.class);
-        viewAnswersIntent.putExtra("shop", s);
-        startActivity(viewAnswersIntent);
-    }
-
 }
 

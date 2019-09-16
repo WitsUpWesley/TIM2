@@ -28,7 +28,29 @@ public class HomePage extends AppCompatActivity {
             username = getIntent().getExtras().getString("username");
         }
         setTitle("Home");
+        ContentValues cv = new ContentValues();
+        cv.put("owner",username);
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShopFromOwner.php", cv) {
+            @Override
+            protected void onPostExecute(String output)
+            {
+                try {
+                    JSONArray shops = new JSONArray(output);
+                    if(shops.length() > 0){
+                    }
+                    else{
+                        Button btnTemp = findViewById(R.id.btnViewOwnShop);
+                        btnTemp.setVisibility(View.INVISIBLE);
 
+                    }
+                    //final JSONObject shop = shops.getJSONObject(0);
+                    //System.out.println("You can create a shop");
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.execute();
     }
 
 

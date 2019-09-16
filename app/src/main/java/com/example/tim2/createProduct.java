@@ -23,6 +23,7 @@ public class createProduct extends AppCompatActivity {
     String username;
     String proName;
     ArrayList<String> items = new ArrayList<>();
+    ArrayList<String> numItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +47,23 @@ public class createProduct extends AppCompatActivity {
 
                 EditText productName = findViewById(R.id.productName_editText);
                 proName = productName.getText().toString().trim();
+               // numItems.remove("");
 
                 for(int i = 0; i < items.size(); i++){
 
                     final ContentValues cont = new ContentValues();
+                    int itemQuantity = 6;
 
                     cont.put("shopName","Caves");
                     cont.put("productName", proName);
-                    cont.put("numItemsNeeded","2");
-
+                    cont.put("numItemsNeeded", itemQuantity);
                     cont.put("itemName", items.get(i));
                     addProduct(items, cont);
+
+                    //System.out.println(numItems.get(i));
                 }
+
+
             }
         });
 
@@ -65,14 +71,17 @@ public class createProduct extends AppCompatActivity {
 
     }
 
-    public void onCheckBox(View view, CheckBox c, String itemadded){
+    public void onCheckBox(View view, CheckBox c, String itemadded,String numItemsNeeded){
 
         if(c.isChecked()){
             items.add(itemadded);
+            numItems.add(numItemsNeeded);
+
         }
 
         else if(!c.isChecked()){
             items.remove(itemadded);
+            numItems.remove(numItemsNeeded);
         }
     }
 
@@ -105,7 +114,7 @@ public class createProduct extends AppCompatActivity {
                         final JSONObject shop = shops.getJSONObject(i);
                         String tester = shop.toString();
                         System.out.println(tester);
-                        View v = View.inflate(holder.getContext(), R.layout.item, null);
+                        final View v = View.inflate(holder.getContext(), R.layout.item, null);
 
                         ((TextView) v.findViewById(R.id.itemShown)).setText("Name: "+ shop.getString("itemName") + "\n" +"Desc: "+ shop.get("itemDescription") + "\n" +"Quantity:" + shop.get("itemQuantity"));
                         System.out.println("working");
@@ -115,14 +124,18 @@ public class createProduct extends AppCompatActivity {
                         final CheckBox  c = v.findViewById(R.id.checkBox);
 
                         c.setOnClickListener(new View.OnClickListener() {
+
+                            EditText itemsNeeded = v.findViewById(R.id.itemsNeeded_editText);
+
+                            final String numItemsNeeded = itemsNeeded.getText().toString().trim();
+
                             @Override
                             public void onClick(View v) {
 
-                                onCheckBox(v,c,itemadded);
+                                onCheckBox(v,c,itemadded,numItemsNeeded);
 
                             }
                         });
-
 
                         holder.addView(v);
                     }

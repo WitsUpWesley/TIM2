@@ -27,12 +27,10 @@
         android:id="@+id/checkBox"
         android:layout_width="42dp"
         android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/itemShown"
-        app:layout_constraintEnd_toStartOf="@+id/itemsNeeded_editText"
+        app:layout_constraintEnd_toEndOf="@+id/itemShown"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/itemShown"
         app:layout_constraintTop_toTopOf="@+id/itemShown"
@@ -40,17 +38,13 @@
 
     <EditText
         android:id="@+id/itemsNeeded_editText"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="73dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="4dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/itemShown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/itemShown"
-        app:layout_constraintTop_toTopOf="@+id/itemShown"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintTop_toTopOf="@+id/itemShown" />
 
 </android.support.constraint.ConstraintLayout>

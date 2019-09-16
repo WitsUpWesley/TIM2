@@ -25,6 +25,7 @@ public class LogInPage extends AppCompatActivity {
                 signup = findViewById(R.id.signup_button);
 
         login.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,9 +52,27 @@ public class ownShop extends AppCompatActivity {
     }
 
     public void viewItems(View v){
-        Intent intent = new Intent( ownShop.this, displayItems.class);
-        intent.putExtra("username",username);
-        startActivity(intent);
+        ContentValues cv = new ContentValues();
+
+        cv.put("owner", username);
+
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShopFromOwner.php", cv) {
+            @Override
+            protected void onPostExecute(String output) {
+                Intent intent = new Intent( ownShop.this, displayItems.class);
+                try{
+                    JSONArray shops = new JSONArray(output);
+                    final JSONObject shop = shops.getJSONObject(0);
+                    String shopName = shop.getString("Shop Name");
+                    intent.putExtra("shopName", shopName);
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                intent.putExtra("username",username);
+                startActivity(intent);
+            }
+        }.execute();
     }
 
 }

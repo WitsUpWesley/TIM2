@@ -22,7 +22,6 @@ import java.util.ArrayList;
 public class createProduct extends AppCompatActivity {
     String username;
     String proName;
-    EditText productName;
     ArrayList<String> items = new ArrayList<>();
 
     @Override
@@ -39,13 +38,7 @@ public class createProduct extends AppCompatActivity {
 
         LinearLayout holder = findViewById(R.id.productHolder);
 
-        productName = findViewById(R.id.productName_editText);
-        proName = productName.getText().toString().trim();
-
         final ContentValues cont = new ContentValues();
-        cont.put("shopName","Caves");
-        cont.put("productName", proName);
-        cont.put("numItemsNeeded","2");
 
         Button createProduct = findViewById(R.id.btnCreateProduct);
 
@@ -80,6 +73,13 @@ public class createProduct extends AppCompatActivity {
     }
 
     public void addProduct(ArrayList items, ContentValues cont){
+
+        EditText productName = findViewById(R.id.productName_editText);
+        proName = productName.getText().toString().trim();
+
+        cont.put("shopName","Caves");
+        cont.put("productName", proName);
+        cont.put("numItemsNeeded","2");
 
         for(int i = 0; i < items.size(); i++){
 
@@ -119,7 +119,8 @@ public class createProduct extends AppCompatActivity {
                         System.out.println("working");
 
                         final String itemadded = shop.getString("itemName");
-                       final CheckBox  c = v.findViewById(R.id.checkBox);
+
+                        final CheckBox  c = v.findViewById(R.id.checkBox);
 
                         c.setOnClickListener(new View.OnClickListener() {
                             @Override

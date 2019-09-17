@@ -7,11 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.Object;
 
 public class createItem extends AppCompatActivity {
-    String username;
+    String username,shopName;
 
     //@SuppressLint("StaticFieldLeak")
     @Override
@@ -19,33 +20,39 @@ public class createItem extends AppCompatActivity {
         setTitle("Create item");
         Bundle extras = getIntent().getExtras();
         username = extras.getString("username");
+        shopName = extras.getString("shopName");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.createitem);
+
+
+        TextView txtShopName2= (TextView) ( findViewById(R.id.txtShopName));
+        txtShopName2.setText(shopName);
     }
 
     public void createTheItem(View v){
-        final EditText shopName = findViewById(R.id.txtShopName),
+        final EditText
                 itemName = findViewById(R.id.txtItemName),
                 itemDesc = findViewById(R.id.txtItemDesc),
                 quantity = findViewById(R.id.txtQuantity);
 
-        String sShopName = shopName.getText().toString().trim();
+       // String sShopName = shopName.getText().toString().trim();
         String sItemName = itemName.getText().toString().trim();
         String sItemDesc = itemDesc.getText().toString().trim();
         String sQuantity = quantity.getText().toString().trim();
 
-        if(sShopName.isEmpty() || sItemName.isEmpty() || sItemDesc.isEmpty() || sQuantity.isEmpty()){
+        if( sItemName.isEmpty() || sItemDesc.isEmpty() || sQuantity.isEmpty()){
             Toast.makeText(createItem.this, "An error has occured please try again", Toast.LENGTH_SHORT).show();
         }
         else{
             int iQuantity = Integer.parseInt(sQuantity);
             ContentValues cv = new ContentValues();
-            cv.put("shopName",sShopName);
+            cv.put("shopName",shopName);
             cv.put("itemName", sItemName);
             cv.put("Description",sItemDesc);
             cv.put("itemQuantity",iQuantity);
             addItem(cv);
-            shopName.getText().clear();
+           // shopName.getText().clear();
             itemDesc.getText().clear();
             itemName.getText().clear();
             quantity.getText().clear();

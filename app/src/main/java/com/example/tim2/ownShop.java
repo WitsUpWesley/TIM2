@@ -52,6 +52,7 @@ public class ownShop extends AppCompatActivity {
     public void createItem(View v){
         Intent intent = new Intent( ownShop.this, createItem.class);
         intent.putExtra("username",username);
+        intent.putExtra("shopName",shopName);
         startActivity(intent);
     }
 

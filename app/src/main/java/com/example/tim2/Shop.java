@@ -54,7 +54,7 @@ public class Shop extends AppCompatActivity {
 
     public void displayItems(final LinearLayout holder, ContentValues cv){
 
-        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getProductFromShopX2.php", cv) {
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/t.php", cv) {
             @Override
             protected void onPostExecute(String output) {
                 try {
@@ -66,6 +66,8 @@ public class Shop extends AppCompatActivity {
 
                     System.out.println(output);
                     JSONArray shops = new JSONArray(output);
+
+                    System.out.println(shops);
                     for (int i = 0; i < shops.length(); i++) {
                         final JSONObject shop = shops.getJSONObject(i);
                         String tester = shop.toString();

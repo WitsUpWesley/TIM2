@@ -49,13 +49,14 @@ public class displayShops extends AppCompatActivity {
 
                         ((TextView) v.findViewById(R.id.displayedShop)).setText(shop.getString("Shop Name"));
 
-                        final String q =((TextView) v.findViewById(R.id.displayedShop)).getText().toString();
+                 final String q =((TextView) v.findViewById(R.id.displayedShop)).getText().toString();
                         v.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
                                 Intent intent = new Intent(displayShops.this, Shop.class);
                                 intent.putExtra("username",username);
+                                intent.putExtra("shopName",q);
                                 startActivity(intent);
 
                             }

@@ -41,6 +41,7 @@ public class ownShop extends AppCompatActivity {
 
                 Intent intent = new Intent(ownShop.this, createProduct.class);
                 intent.putExtra("username",username);
+                intent.putExtra("shopName",shopName);
                 startActivity(intent);
             }
         });

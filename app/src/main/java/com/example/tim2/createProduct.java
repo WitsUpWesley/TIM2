@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class createProduct extends AppCompatActivity {
-    String username;
+    String username,shopName;
     String proName;
     ArrayList<String> items = new ArrayList<>();
     ArrayList<String> numItems = new ArrayList<>();
@@ -33,9 +33,11 @@ public class createProduct extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         username = extras.getString("username");
-
+        shopName = extras.getString("shopName");
         ContentValues cv = new ContentValues();
-        cv.put("shopName","Caves");
+
+        cv.put("username",username);
+        cv.put("shopName",shopName);
 
         LinearLayout holder = findViewById(R.id.productHolder);
 
@@ -54,7 +56,7 @@ public class createProduct extends AppCompatActivity {
                     final ContentValues cont = new ContentValues();
                     int itemQuantity = 6;
 
-                    cont.put("shopName","Caves");
+                    cont.put("shopName",shopName);
                     cont.put("productName", proName);
                     cont.put("numItemsNeeded", itemQuantity);
                     cont.put("itemName", items.get(i));

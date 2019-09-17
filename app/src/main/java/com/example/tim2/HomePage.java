@@ -1,5 +1,6 @@
 package com.example.tim2;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -28,13 +29,15 @@ public class HomePage extends AppCompatActivity {
             username = getIntent().getExtras().getString("username");
         }
         setTitle("Home");
-        ContentValues cv = new ContentValues();
+        final ContentValues cv = new ContentValues();
         cv.put("owner",username);
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShopFromOwner.php", cv) {
             @Override
             protected void onPostExecute(String output)
             {
                 try {
+                 // cv.clear();
+
                     JSONArray shops = new JSONArray(output);
                     if(shops.length() > 0){
                     }
@@ -52,8 +55,6 @@ public class HomePage extends AppCompatActivity {
             }
         }.execute();
     }
-
-
     public void logout(View v) {
         Intent intent = new Intent(HomePage.this, LogInPage.class);
         startActivity(intent);

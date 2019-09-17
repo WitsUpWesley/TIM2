@@ -18,32 +18,53 @@ import org.json.JSONObject;
 import static android.view.View.VISIBLE;
 
 public class Shop extends AppCompatActivity {
+    String username;
     String shopName;
 
     //@SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         Bundle extras = getIntent().getExtras();
-        shopName = extras.getString("shop");
+        username = extras.getString("username");
+        shopName = extras.getString("shopName");
         setTitle("Products");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop);
 
         ContentValues c = new ContentValues();
-        c.put("shopName", "Caves");
+        System.out.println("****************************************************");
+
+        System.out.println("****************************************************");
+
+        System.out.println("****************************************************");
+
+        System.out.println("****************************************************");
+
+        System.out.println("****************************************************");
+
+        System.out.println(shopName);
+        c.put("shopName",  shopName);
         LinearLayout holder = findViewById(R.id.productHolder);
         displayItems(holder, c);
 
 
     }
 
-    public void displayItems(final LinearLayout holder, ContentValues c){
+    public void displayItems(final LinearLayout holder, ContentValues cv){
 
-        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getProductShopX.php", c) {
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getProductFromShopX2.php", cv) {
             @Override
             protected void onPostExecute(String output) {
                 try {
+
+                    System.out.println("************aaaaaaaaaaaaaaa****************************************");
+
+
+                    System.out.println("**************************************aaaaaa**************");
+
+                    System.out.println(output);
                     JSONArray shops = new JSONArray(output);
                     for (int i = 0; i < shops.length(); i++) {
                         final JSONObject shop = shops.getJSONObject(i);
@@ -51,7 +72,7 @@ public class Shop extends AppCompatActivity {
                         System.out.println(tester);
                         View v = View.inflate(holder.getContext(), R.layout.product, null);
 
-                        ((TextView) v.findViewById(R.id.displayedProduct)).setText("Name: " + shop.getString("itemName"));
+                        ((TextView) v.findViewById(R.id.displayedProduct)).setText("Name: " + shop.getString("productName"));
                         System.out.println("working");
                         holder.addView(v);
                     }

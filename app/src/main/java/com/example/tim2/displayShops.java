@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,7 +38,6 @@ public class displayShops extends AppCompatActivity {
 
     public void displayShops(final LinearLayout holder, ContentValues cv) {
 
-
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShops.php", cv) {
             @Override
             protected void onPostExecute(String output) {
@@ -54,7 +54,9 @@ public class displayShops extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-                                openViewAnswersPage(q);
+                                Intent intent = new Intent(displayShops.this, Shop.class);
+                                intent.putExtra("username",username);
+                                startActivity(intent);
 
                             }
                         });

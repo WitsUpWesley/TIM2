@@ -1,5 +1,6 @@
 package com.example.tim2;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,12 +12,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class displayItems extends AppCompatActivity {
-    String username;
+    String username,shopName;
 
     //@SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
         setTitle("Items");
         super.onCreate(savedInstanceState);
@@ -25,13 +29,14 @@ public class displayItems extends AppCompatActivity {
         setContentView(R.layout.displayshops);
 
         username = extras.getString("username");
+        shopName = extras.getString("shopName");
 
         ContentValues c = new ContentValues();
-        c.put("shopName","Caves"); // need to get this value later
+        c.put("shopName", shopName); // need to get this value later
 
         LinearLayout holder = findViewById(R.id.productHolder);
         //System.out.println("PROBLEM AREA");
-        displayItems(holder,c);
+        displayItems(holder, c);
 
     }
 
@@ -48,7 +53,7 @@ public class displayItems extends AppCompatActivity {
                         System.out.println(tester);
                         View v = View.inflate(holder.getContext(), R.layout.shop_item_larger, null);
 
-                        ((TextView) v.findViewById(R.id.displayedItem)).setText("Name: "+ shop.getString("itemName") + "\n" +"Desc: "+ shop.get("itemDescription") + "\n" +"Quantity:" + shop.get("itemQuantity"));
+                        ((TextView) v.findViewById(R.id.displayedItem)).setText("Name: " + shop.getString("itemName") + "\n" + "Desc: " + shop.get("itemDescription") + "\n" + "Quantity:" + shop.get("itemQuantity"));
                         System.out.println("working");
                         /*final String q =((TextView) v.findViewById(R.id.displayedShop)).getText().toString();
                         v.setOnClickListener(new View.OnClickListener() {
@@ -68,5 +73,5 @@ public class displayItems extends AppCompatActivity {
             }
         }.execute();
     }
-}
 
+}

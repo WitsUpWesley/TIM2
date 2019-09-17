@@ -26,10 +26,40 @@ public class Shop extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         shopName = extras.getString("shop");
-        setTitle(shopName);
+        setTitle("Products");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop);
 
+        ContentValues c = new ContentValues();
+        c.put("shopName", "Caves");
+        LinearLayout holder = findViewById(R.id.productHolder);
+        displayItems(holder, c);
+
+
+    }
+
+    public void displayItems(final LinearLayout holder, ContentValues c){
+
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getProductShopX.php", c) {
+            @Override
+            protected void onPostExecute(String output) {
+                try {
+                    JSONArray shops = new JSONArray(output);
+                    for (int i = 0; i < shops.length(); i++) {
+                        final JSONObject shop = shops.getJSONObject(i);
+                        String tester = shop.toString();
+                        System.out.println(tester);
+                        View v = View.inflate(holder.getContext(), R.layout.product, null);
+
+                        ((TextView) v.findViewById(R.id.displayedProduct)).setText("Name: " + shop.getString("itemName"));
+                        System.out.println("working");
+                        holder.addView(v);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.execute();
 
     }
 

@@ -20,8 +20,10 @@ import org.json.JSONObject;
 import static android.view.View.VISIBLE;
 
 public class createShop extends AppCompatActivity {
-    String username;
+    public static boolean doesNameExist = false;
+    String username,storeName;
     boolean existingShop = false;
+
 
     //@SuppressLint("StaticFieldLeak")
     @Override
@@ -29,9 +31,11 @@ public class createShop extends AppCompatActivity {
         setTitle("Create Shop");
         Bundle extras = getIntent().getExtras();
         username = extras.getString("username");
-        System.out.println(username);
+        storeName = extras.getString("shopName");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.createshop);
+        System.out.println("!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(storeName);
 
 
 
@@ -67,12 +71,18 @@ public class createShop extends AppCompatActivity {
                 shopDesc = findViewById(R.id.txtDesc),
                 shopType = findViewById(R.id.txtType);
 
-        String sShopName = shopName.getText().toString().trim();
+        final String sShopName = shopName.getText().toString().trim();
         String sShopDesc = shopDesc.getText().toString().trim();
         String sShopType = shopType.getText().toString().trim();
 
         if(sShopName.isEmpty() || sShopDesc.isEmpty() || sShopType.isEmpty()){
-            Toast.makeText(createShop.this, "An error has occured please try again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(createShop.this, "An error has occurred please try again, ensure that all fields are correctly filled in.", Toast.LENGTH_SHORT).show();
+        }
+        else if(existingShop == true){
+            Toast.makeText(createShop.this, "You have already created a shop.", Toast.LENGTH_SHORT).show();
+            shopName.getText().clear();
+            shopDesc.getText().clear();
+            shopType.getText().clear();
         }
         else{
             final ContentValues c = new ContentValues();
@@ -80,29 +90,25 @@ public class createShop extends AppCompatActivity {
             c.put("shopDescription",sShopDesc);
             c.put("type",sShopType);
             c.put("owner",username);
-            if(existingShop == true){
-                Toast.makeText(createShop.this, "You already own a shop and cannot make another.", Toast.LENGTH_SHORT).show();
-                shopName.getText().clear();
-                shopDesc.getText().clear();
-                shopType.getText().clear();
+            addShop(c);
+            //shopName.getText().clear();
+            //shopDesc.getText().clear();
+            //shopType.getText().clear();
             }
-            else{
-                addShop(c);
-                shopName.getText().clear();
-                shopDesc.getText().clear();
-                shopType.getText().clear();
-                Toast.makeText(createShop.this, "The item has been added", Toast.LENGTH_SHORT).show();
-            }
-
         }
 
-
-    }
-
-    public static void addShop(ContentValues c){
+    public void addShop(ContentValues c){
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addShop.php", c) {
             @Override
-            protected void onPostExecute(String output) {
+            protected void onPostExecute(String output)
+            {
+                System.out.println("The output is:" + output + ".");
+                if(output.equals("[]")){
+                    Toast.makeText(createShop.this, "Shop could not be created, please try again.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(createShop.this, "Successfully created shop.", Toast.LENGTH_SHORT).show();
+                }
             }
         }.execute();
     }

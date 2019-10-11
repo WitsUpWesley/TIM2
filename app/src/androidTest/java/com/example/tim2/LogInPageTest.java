@@ -95,3 +95,4 @@ public class LogInPageTest {
         onView(withId(R.id.login_button)).perform(click());
     }
 }
+//finished

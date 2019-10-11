@@ -27,13 +27,14 @@ public class displayProductTest {
     public ActivityTestRule rule=new ActivityTestRule(displayProduct.class,true,false);
 
     @Test
-    public void viewProductOpening() throws Exception {
+    public void database() throws Exception {
 
         Bundle b = new Bundle();
         b.putString("username", "a");
         b.putString("shopName", "Toys Were Us");
+       // b.putString("q", "Name: Toy Car");
         rule.launchActivity(new Intent().putExtras(b));
-        onView(withId(R.id.questionScrollView)).perform(click());
+        onView(withId(R.id.displayedProduct)).perform(click());
     }
 
 

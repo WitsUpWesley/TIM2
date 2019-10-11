@@ -112,4 +112,17 @@ public class HomePageTest {
         }.execute();
     }
 
+    @Test
+    public void database2() throws Exception {
+        ContentValues cv = new ContentValues();
+        cv.put("owner", "apple");
+
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShopFromOwner.php", cv) {
+            @Override
+            protected void onPostExecute(String output) {
+                System.out.println(output);
+            }
+        }.execute();
+    }
+
 }

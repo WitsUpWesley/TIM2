@@ -45,5 +45,47 @@ public class ownShopTest {
         onView(withId(R.id.btnViewItems)).check(matches(withText("VIEW ITEMS")));
     }
 
+    @Test
+    public void createItemOpening() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "a");
+        b.putString("shopName", "Toys Were Us");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnCreateItem)).perform(click());
+    }
+
+    @Test
+    public void createProductOpening() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "a");
+        b.putString("shopName", "Toys Were Us");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnCreateProduct)).perform(click());
+    }
+
+    @Test
+    public void viewItemOpening() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "a");
+        b.putString("shopName", "Toys Were Us");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnViewItems)).perform(click());
+    }
+
+    @Test
+    public void viewProductOpening() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "a");
+        b.putString("shopName", "Toys Were Us");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnViewProducts)).perform(click());
+    }
+
+
 
 }
+//Finished

@@ -10,6 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -61,6 +64,15 @@ public class SignUpTest {
     public void btnCreate() throws Exception{
         rule.launchActivity(new Intent());
         onView(withId(R.id.create_button)).check(matches(withText("CREATE")));
+    }
+
+    @Test
+    public void database2() throws Exception {
+        rule.launchActivity(new Intent());
+        onView(withId(R.id.enterUsername_editText)).perform(typeText("UnitTest"),closeSoftKeyboard());
+        onView(withId(R.id.enterPassword_editText)).perform(typeText("UnitTest"),closeSoftKeyboard());
+        onView(withId(R.id.confirmPassword_editText)).perform(typeText("UnitTest"),closeSoftKeyboard());
+        onView(withId(R.id.create_button)).perform(click());
     }
 
 

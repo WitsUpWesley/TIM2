@@ -28,6 +28,9 @@
         <activity android:name=".ownShop" />
         <activity android:name=".createItem" />
         <activity android:name=".displayItems" />
+        <activity android:name=".displayProduct"/>
+        <activity android:name=".Product"/>
+        <activity android:name=".DeleteItem"/>
     </application>
 
 </manifest>

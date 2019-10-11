@@ -122,4 +122,22 @@ public class HomePageTest {
         onView(withId(R.id.btnViewOwnShop)).perform(click());
     }
 
+    @Test
+    public void viewShops() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "a");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnViewShops)).perform(click());
+    }
+
+    @Test
+    public void createShop() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "UnitTest");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnCreateItem)).perform(click());
+    }
+
 }

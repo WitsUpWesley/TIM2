@@ -9,6 +9,7 @@ import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.view.View;
+import android.widget.Button;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -114,15 +115,11 @@ public class HomePageTest {
 
     @Test
     public void database2() throws Exception {
-        ContentValues cv = new ContentValues();
-        cv.put("owner", "apple");
 
-        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShopFromOwner.php", cv) {
-            @Override
-            protected void onPostExecute(String output) {
-                System.out.println(output);
-            }
-        }.execute();
+        Bundle b = new Bundle();
+        b.putString("username", "a");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnViewOwnShop)).perform(click());
     }
 
 }

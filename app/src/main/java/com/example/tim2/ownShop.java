@@ -80,6 +80,12 @@ public class ownShop extends AppCompatActivity {
         }.execute();
     }
 
+    public void viewProducts(View v) {
+        Intent intent = new Intent(ownShop.this, displayProduct.class);
+        intent.putExtra("username", username);
+        intent.putExtra("shopName", shopName);
+        startActivity(intent);
+    }
 }
 
 

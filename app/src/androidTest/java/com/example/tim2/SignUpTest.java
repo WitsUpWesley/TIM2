@@ -74,6 +74,5 @@ public class SignUpTest {
         onView(withId(R.id.confirmPassword_editText)).perform(typeText("UnitTest"),closeSoftKeyboard());
         onView(withId(R.id.create_button)).perform(click());
     }
-
-
 }
+//Finished

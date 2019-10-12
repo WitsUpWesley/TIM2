@@ -15,6 +15,8 @@ import org.junit.runner.RunWith;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -75,6 +77,15 @@ public class createShopTest {
     public void btnAddShop() throws Exception{
         rule.launchActivity(new Intent().putExtra(username,"a").putExtra(storeName,"Caves"));
         onView(withId(R.id.btnAddShop)).check(matches(withText("ADD SHOP")));
+    }
+
+    @Test//
+    public void createShop() throws Exception{
+        rule.launchActivity(new Intent().putExtra(username,"UnitTest").putExtra(storeName,"Toys Were Us"));
+        onView(withId(R.id.txtName)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
+        onView(withId(R.id.txtDesc)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
+        onView(withId(R.id.txtType)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
+        onView(withId(R.id.btnAddShop)).perform(click());
     }
 
 

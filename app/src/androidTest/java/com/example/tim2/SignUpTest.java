@@ -66,8 +66,8 @@ public class SignUpTest {
         onView(withId(R.id.create_button)).check(matches(withText("CREATE")));
     }
 
-    @Test
-    public void database2() throws Exception {
+    @Test//
+    public void signUp() throws Exception {
         rule.launchActivity(new Intent());
         onView(withId(R.id.enterUsername_editText)).perform(typeText("UnitTest"),closeSoftKeyboard());
         onView(withId(R.id.enterPassword_editText)).perform(typeText("UnitTest"),closeSoftKeyboard());

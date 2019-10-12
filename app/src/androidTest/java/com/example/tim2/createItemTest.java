@@ -15,6 +15,8 @@ import org.junit.runner.RunWith;
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -67,6 +69,18 @@ public class createItemTest {
     public void btnAddShop() throws Exception{
         rule.launchActivity(new Intent().putExtra(username,"a"));
         onView(withId(R.id.btnAddItem)).check(matches(withText("ADD ITEM")));
+    }
+
+    @Test//
+    public void createItem() throws Exception{
+        Bundle b = new Bundle();
+        b.putString("username", "UnitTest");
+        b.putString("shopName", "UnitTestShop");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.txtItemName)).perform(typeText("UnitTestItem"),closeSoftKeyboard());
+        onView(withId(R.id.txtItemDesc)).perform(typeText("UnitTestItem"),closeSoftKeyboard());
+        onView(withId(R.id.txtQuantity)).perform(typeText("1"),closeSoftKeyboard());
+        onView(withId(R.id.btnAddItem)).perform(click());
     }
 
 

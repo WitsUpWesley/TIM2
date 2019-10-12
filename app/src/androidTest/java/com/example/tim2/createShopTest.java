@@ -81,7 +81,10 @@ public class createShopTest {
 
     @Test//
     public void createShop() throws Exception{
-        rule.launchActivity(new Intent().putExtra(username,"UnitTest").putExtra(storeName,"Toys Were Us"));
+        Bundle b = new Bundle();
+        b.putString("username", "UnitTest");
+        b.putString("shopName", "Caves");
+        rule.launchActivity(new Intent().putExtras(b));
         onView(withId(R.id.txtName)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
         onView(withId(R.id.txtDesc)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
         onView(withId(R.id.txtType)).perform(typeText("UnitTestShop"),closeSoftKeyboard());

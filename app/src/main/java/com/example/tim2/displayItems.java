@@ -5,8 +5,11 @@ import android.content.ContentValues;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +29,7 @@ public class displayItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
 
-        setContentView(R.layout.displayshops);
+        setContentView(R.layout.view_items);
 
         username = extras.getString("username");
         shopName = extras.getString("shopName");
@@ -34,12 +37,44 @@ public class displayItems extends AppCompatActivity {
         ContentValues c = new ContentValues();
         c.put("shopName", shopName); // need to get this value later
 
-        LinearLayout holder = findViewById(R.id.productHolder);
+        LinearLayout holder = findViewById(R.id.itemHolder);
         //System.out.println("PROBLEM AREA");
         displayItems(holder, c);
 
+        EditText itemNameEditText = findViewById(R.id.itemName_editText);
+        final String itemName = itemNameEditText.getText().toString().trim();
+
+        EditText itemQuantityEditText = findViewById(R.id.itemQuantity_editText);
+        final String itemQuantity = itemQuantityEditText.getText().toString().trim();
+
+        Button updateButton = findViewById(R.id.btnUpdateItemQuantity);
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               update(shopName, itemName, itemQuantity);
+            }
+        });
+
     }
 
+    public void update(String shopName, String itemName, String itemQuantity){
+        ContentValues cv = new ContentValues();
+        cv.put("shopName", shopName);
+        cv.put("itemName", itemName);
+        cv.put("itemQuantity", itemQuantity);
+
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/updateItemQuantity.php", cv) {
+            @Override
+            protected void onPostExecute(String output){
+
+                Toast.makeText(displayItems.this,"updated", Toast.LENGTH_SHORT).show();
+            }
+        }.execute();
+
+
+    }
     public void displayItems(final LinearLayout holder, ContentValues cv) {
 
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getItemFromShopX.php", cv) {

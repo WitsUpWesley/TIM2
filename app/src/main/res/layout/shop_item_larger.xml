@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/displayedItem"
-        android:layout_width="354dp"
-        android:layout_height="88dp"
+        android:layout_width="380dp"
+        android:layout_height="106dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -20,8 +20,9 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintVertical_bias="0.231" />
+
 </android.support.constraint.ConstraintLayout>

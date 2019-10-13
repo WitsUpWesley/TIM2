@@ -92,7 +92,6 @@ public class createProduct extends AppCompatActivity {
                 new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/addProduct.php", cont) {
                     @Override
                     protected void onPostExecute(String output) {
-
                         if(output.equals("1")){
                             Toast.makeText(createProduct.this,"Product added", Toast.LENGTH_SHORT).show();
                         }
@@ -100,6 +99,7 @@ public class createProduct extends AppCompatActivity {
                         else{
                             Toast.makeText(createProduct.this,"Failed", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 }.execute();
 

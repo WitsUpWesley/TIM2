@@ -34,7 +34,7 @@ public class displayProductTest {
         b.putString("shopName", "Toys Were Us");
        // b.putString("q", "Name: Toy Car");
         rule.launchActivity(new Intent().putExtras(b));
-        onView(withId(R.id.displayedProduct)).perform(click());
+        //onView(withId(R.id.displayedProduct)).perform(click());
     }
 
 

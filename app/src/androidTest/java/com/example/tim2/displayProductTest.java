@@ -30,11 +30,11 @@ public class displayProductTest {
     public void database() throws Exception {
 
         Bundle b = new Bundle();
-        b.putString("username", "a");
-        b.putString("shopName", "Toys Were Us");
+        b.putString("username", "UnitTest");
+        b.putString("shopName", "UnitTestShop");
        // b.putString("q", "Name: Toy Car");
         rule.launchActivity(new Intent().putExtras(b));
-        //onView(withId(R.id.displayedProduct)).perform(click());
+        onView(withId(R.id.displayedProduct)).perform(click());
     }
 
 

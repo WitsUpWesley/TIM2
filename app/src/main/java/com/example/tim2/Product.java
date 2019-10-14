@@ -67,6 +67,7 @@ public class Product extends AppCompatActivity {
                                 Intent intent = new Intent(Product.this, DeleteItem.class);
                                 intent.putExtra("shopName",shopName);
                                 intent.putExtra("itemName",q);
+                                intent.putExtra("productName",productName);
                                 startActivity(intent);
                             }
                         });

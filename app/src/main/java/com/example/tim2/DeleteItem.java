@@ -16,6 +16,7 @@ import org.json.JSONObject;
 public class DeleteItem extends AppCompatActivity {
     String itemName;
     String shopName;
+    String productName;
 
     //@SuppressLint("StaticFieldLeak")
     @Override
@@ -25,26 +26,24 @@ public class DeleteItem extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         itemName = extras.getString("itemName");
         shopName = extras.getString("shopName");
+        productName = extras.getString("productName");
         setTitle(itemName);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete_item_from_product);
     }
 
     public void deleteItem(View v){
-        /*
+
         ContentValues cv = new ContentValues();
         cv.put("shopName",shopName);
         cv.put("productName",productName);
-        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/deleteProduct.php",cv) {
+        cv.put("itemName",itemName);
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/deleteItemFromProduct.php",cv) {
             @Override
             protected void onPostExecute(String output) {
-                Toast.makeText(Product.this,"Product deleted.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DeleteItem.this,"Item deleted from the product recipe.", Toast.LENGTH_SHORT).show();
             }
         }.execute();
-        Intent intent = new Intent(Product.this, displayProduct.class);
-        intent.putExtra("username", username);
-        intent.putExtra("shopName", shopName);
-        startActivity(intent);*/
     }
 
 }

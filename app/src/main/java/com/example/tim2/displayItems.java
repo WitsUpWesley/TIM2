@@ -47,14 +47,39 @@ public class displayItems extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                EditText itemNameEditText = findViewById(R.id.itemName_editText);
-                String itemName = itemNameEditText.getText().toString().trim();
+                ContentValues cv = new ContentValues();
+                cv.put("shopName", shopName);
+
+                new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getItemFromShopX.php", cv) {
+
+                    EditText itemNameEditText = findViewById(R.id.itemName_editText);
+                    final String itemName = itemNameEditText.getText().toString().trim();
 
 
-                EditText itemQuantityEditText = findViewById(R.id.itemQuantity_editText);
-                String itemQuantity = itemQuantityEditText.getText().toString().trim();
+                    EditText itemQuantityEditText = findViewById(R.id.itemQuantity_editText);
+                    String itemQuantity = itemQuantityEditText.getText().toString().trim();
 
-                update(shopName, itemName, itemQuantity);
+                    @Override
+                    protected void onPostExecute(String output) {
+                        try {
+                            JSONArray shops = new JSONArray(output);
+                            for (int i = 0; i < shops.length(); i++) {
+                                final JSONObject shop = shops.getJSONObject(i);
+                                if(shop.getString("itemName").equals(itemName)){
+                                    String tester = shop.getString("itemQuantity");
+                                    int prevQuantity = Integer.parseInt(tester);
+                                    int total = prevQuantity + Integer.parseInt(itemQuantity);
+
+                                    update(shopName, itemName, Integer.toString(total));
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.execute();
+
+
 
             }
         });
@@ -94,16 +119,6 @@ public class displayItems extends AppCompatActivity {
 
                         ((TextView) v.findViewById(R.id.displayedItem)).setText("Name: " + shop.getString("itemName") + "\n" + "Desc: " + shop.get("itemDescription") + "\n" + "Quantity:" + shop.get("itemQuantity"));
                         System.out.println("working");
-                        /*final String q =((TextView) v.findViewById(R.id.displayedShop)).getText().toString();
-                        v.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                openViewAnswersPage(q);
-
-                            }
-                        });*/
-
                         holder.addView(v);
                     }
                 } catch (JSONException e) {

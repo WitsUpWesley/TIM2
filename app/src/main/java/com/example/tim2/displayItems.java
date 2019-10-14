@@ -41,25 +41,28 @@ public class displayItems extends AppCompatActivity {
         //System.out.println("PROBLEM AREA");
         displayItems(holder, c);
 
-        EditText itemNameEditText = findViewById(R.id.itemName_editText);
-        final String itemName = itemNameEditText.getText().toString().trim();
-
-        EditText itemQuantityEditText = findViewById(R.id.itemQuantity_editText);
-        final String itemQuantity = itemQuantityEditText.getText().toString().trim();
-
         Button updateButton = findViewById(R.id.btnUpdateItemQuantity);
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-               update(shopName, itemName, itemQuantity);
+                EditText itemNameEditText = findViewById(R.id.itemName_editText);
+                String itemName = itemNameEditText.getText().toString().trim();
+
+
+                EditText itemQuantityEditText = findViewById(R.id.itemQuantity_editText);
+                String itemQuantity = itemQuantityEditText.getText().toString().trim();
+
+                update(shopName, itemName, itemQuantity);
+
             }
         });
 
     }
 
     public void update(String shopName, String itemName, String itemQuantity){
+
         ContentValues cv = new ContentValues();
         cv.put("shopName", shopName);
         cv.put("itemName", itemName);
@@ -69,7 +72,8 @@ public class displayItems extends AppCompatActivity {
             @Override
             protected void onPostExecute(String output){
 
-                Toast.makeText(displayItems.this,"updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(displayItems.this,"Successfully Updated", Toast.LENGTH_SHORT).show();
+
             }
         }.execute();
 

@@ -39,11 +39,12 @@
 
     <EditText
         android:id="@+id/itemsNeeded_editText"
+        android:text="1"
         android:layout_width="73dp"
         android:layout_height="68dp"
         android:layout_marginEnd="4dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/itemShown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/itemShown" />

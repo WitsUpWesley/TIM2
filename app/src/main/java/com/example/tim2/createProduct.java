@@ -50,19 +50,27 @@ public class createProduct extends AppCompatActivity {
                 EditText productName = findViewById(R.id.productName_editText);
                 proName = productName.getText().toString().trim();
                // numItems.remove("");
-
+             //   int itemQuantity =  Integer.parseInt(( (EditText) findViewById(R.id.itemsNeeded_editText) ).getText().toString());
                 for(int i = 0; i < items.size(); i++){
 
                     final ContentValues cont = new ContentValues();
-                    int itemQuantity = 6;
+                  //  int itemQuantity =  Integer.parseInt(( (EditText) findViewById(R.id.itemsNeeded_editText) ).getText().toString());
+                    for(int k = 0; k < numItems.size(); k++){
 
+                        System.out.println("hereeeeeeee_numItems: !_!_!_!_!_!_!_!__!!_!__!!_!__!_ "+  numItems.get(k));
+
+
+                    }
+
+
+                    System.out.println("hereeeeeeee_!_!_!_!_!_!_!_!__!!_!__!!_!__!_ "+  numItems.get(i));
                     cont.put("shopName",shopName);
                     cont.put("productName", proName);
-                    cont.put("numItemsNeeded", itemQuantity);
+                    cont.put("numItemsNeeded",  numItems.get(i));
                     cont.put("itemName", items.get(i));
                     addProduct(items, cont);
 
-                    //System.out.println(numItems.get(i));
+
                 }
 
 
@@ -77,13 +85,13 @@ public class createProduct extends AppCompatActivity {
 
         if(c.isChecked()){
             items.add(itemadded);
-            numItems.add(numItemsNeeded);
+          numItems.add(numItemsNeeded);
 
         }
 
         else if(!c.isChecked()){
             items.remove(itemadded);
-            numItems.remove(numItemsNeeded);
+           numItems.remove(numItemsNeeded);
         }
     }
 
@@ -97,7 +105,7 @@ public class createProduct extends AppCompatActivity {
                         }
 
                         else{
-                            Toast.makeText(createProduct.this,"Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(createProduct.this,"Failed, username exists", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -119,22 +127,40 @@ public class createProduct extends AppCompatActivity {
                         final View v = View.inflate(holder.getContext(), R.layout.item, null);
 
                         ((TextView) v.findViewById(R.id.itemShown)).setText("Name: "+ shop.getString("itemName") + "\n" +"Desc: "+ shop.get("itemDescription") + "\n" +"Quantity:" + shop.get("itemQuantity"));
-                        System.out.println("working");
+                        System.out.println("working ");
 
                         final String itemadded = shop.getString("itemName");
+
+
+                    //  final int numItemsNeeded =Integer.parseInt( shop.getString("itemQuantity") );
+                     //   ((TextView) v.findViewById(R.id.itemsNeeded_editText) ).getText().toString();
+
+                        final int numItemsNeeded =Integer.parseInt(   ((TextView) v.findViewById(R.id.itemsNeeded_editText) ).getText().toString() );
+
 
                         final CheckBox  c = v.findViewById(R.id.checkBox);
 
                         c.setOnClickListener(new View.OnClickListener() {
 
-                            EditText itemsNeeded = v.findViewById(R.id.itemsNeeded_editText);
 
-                            final String numItemsNeeded = itemsNeeded.getText().toString().trim();
+                       EditText itemsNeeded = v.findViewById(R.id.itemsNeeded_editText);
+
+                     // final int numItemsNeeded =Integer.parseInt( itemsNeeded.getText().toString() );
+
 
                             @Override
                             public void onClick(View v) {
 
-                                onCheckBox(v,c,itemadded,numItemsNeeded);
+                                System.out.println("111111111111111111111111111");
+                            //    EditText itemsNeeded =(EditText) v.findViewById(R.id.itemsNeeded_editText);
+
+                                System.out.println("2222222222222222222222222222222222222222222       "+itemsNeeded.getText());
+
+
+                                final int numItemsNeeded2 =Integer.parseInt( itemsNeeded.getText().toString() );
+
+                                System.out.println(itemadded+ "in_____________________________________ onlcik  "+ numItemsNeeded2);
+                                onCheckBox(v,c,itemadded,""+itemsNeeded.getText());
 
                             }
                         });

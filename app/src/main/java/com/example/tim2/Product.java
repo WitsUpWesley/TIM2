@@ -61,6 +61,8 @@ public class Product extends AppCompatActivity {
                         ((TextView) v.findViewById(R.id.displayedItem)).setText("Name: " + shop.getString("itemName") + "\n" + "Quantity Needed: " + shop.get("numItemsNeeded"));
                         final String q =shop.getString("itemName");
                         //}
+                        /* REPLACE WITH ORDERING CODE OR WHATEVER
+
                         v.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -71,6 +73,8 @@ public class Product extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
+
+                        */
                         System.out.println("working");
 
                         holder.addView(v);

@@ -29,8 +29,8 @@
         <activity android:name=".createItem" />
         <activity android:name=".displayItems" />
         <activity android:name=".displayProduct"/>
-        <activity android:name=".Product"/>
         <activity android:name=".DeleteItem"/>
+        <activity android:name=".searchProduct"/>
     </application>
 
 </manifest>

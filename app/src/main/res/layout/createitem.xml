@@ -20,12 +20,14 @@
         android:layout_marginBottom="8dp"
         android:text="Item Name"
         android:textSize="24sp"
+        android:windowSoftInputMode="adjustResize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.218" />
+
+    app:layout_constraintVertical_bias="0.218" />
 
     <TextView
         android:id="@+id/lblShopName"
@@ -34,6 +36,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:windowSoftInputMode="adjustResize"
         android:layout_marginBottom="8dp"
         android:text="Shop Name"
         android:textSize="24sp"
@@ -55,12 +58,13 @@
         android:layout_marginBottom="8dp"
         android:text="Item Description"
         android:textSize="24sp"
+        android:windowSoftInputMode="adjustResize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.454" />
 
     <TextView
         android:id="@+id/lblQuantity"
@@ -69,6 +73,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:windowSoftInputMode="adjustResize"
         android:layout_marginBottom="8dp"
         android:text="Quantity"
         android:textSize="24sp"
@@ -84,40 +89,42 @@
         android:layout_width="385dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
+        android:windowSoftInputMode="adjustResize"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/lblQuantity"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblItemDesc"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537" />
 
     <EditText
         android:id="@+id/txtQuantity"
         android:layout_width="383dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:windowSoftInputMode="adjustResize"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddItem"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblQuantity"
-        app:layout_constraintVertical_bias="0.619" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.783" />
 
     <EditText
         android:id="@+id/txtItemName"
-        android:layout_width="385dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="370dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -125,10 +132,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/lblItemDesc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblItemName"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.461" />
 
     <TextView
         android:id="@+id/txtShopName"
@@ -137,17 +144,18 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:windowSoftInputMode="adjustResize"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/lblItemName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblShopName"
-        app:layout_constraintVertical_bias="0.511" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
 
     <Button
         android:id="@+id/btnAddItem"

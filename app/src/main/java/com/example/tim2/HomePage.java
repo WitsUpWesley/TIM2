@@ -114,5 +114,11 @@ public class HomePage extends AppCompatActivity {
             }
         }.execute();
     }
+
+    public void searchProduct(View v){
+        Intent intent = new Intent( HomePage.this, searchProduct.class);
+        intent.putExtra("username",username);
+        startActivity(intent);
+    }
 }
 

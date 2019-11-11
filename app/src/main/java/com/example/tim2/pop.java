@@ -82,8 +82,9 @@ public class pop extends Activity{
 
                 finish();
 
-                Intent intent = new Intent(pop.this, ownShop.class);
+                Intent intent = new Intent(pop.this, HomePage.class);
                 intent.putExtra("shopname", shopName);
+                System.out.println("++++++++++++++++++++++++++++++++++++" + userName);
                 intent.putExtra("username", userName);
                 startActivity(intent);
 

@@ -27,10 +27,9 @@ public class displayItems extends AppCompatActivity {
 
         setTitle("Items");
         super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();
-
         setContentView(R.layout.view_items);
 
+        Bundle extras = getIntent().getExtras();
         username = extras.getString("username");
         shopName = extras.getString("shopName");
 

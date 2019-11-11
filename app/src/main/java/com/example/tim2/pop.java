@@ -58,15 +58,15 @@ public class pop extends Activity{
                                 if (shop.getString("itemName").equals(itemName)) {
                                     String tester = shop.getString("itemQuantity");
                                     int prevQuantity = Integer.parseInt(tester);
-                                    int total = prevQuantity + Integer.parseInt(itemQuantity);
-
-                                    if(itemQuantity != null){
+                                    if(!itemQuantity.matches("")) {
+                                        int total = prevQuantity + Integer.parseInt(itemQuantity);
                                         update(shopName, itemName, Integer.toString(total));
                                     }
 
-                                    else if(itemQuantity == ""){
+                                   else if(itemQuantity.matches("")){
 
                                         Toast.makeText(pop.this,"Missing field", Toast.LENGTH_SHORT).show();
+                                        startActivity(getIntent());
 
                                     }
 
@@ -79,7 +79,8 @@ public class pop extends Activity{
                     }
                 }.execute();
 
-               finish();
+                finish();
+
             }
         });
 

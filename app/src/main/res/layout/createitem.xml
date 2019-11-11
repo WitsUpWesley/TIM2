@@ -5,8 +5,7 @@
     android:id="@+id/linlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:isScrollContainer="true"
-    android:orientation="vertical"
+
     android:background="@drawable/lightbeige"
     tools:context="com.example.tim2.createItem">
 
@@ -20,7 +19,7 @@
         android:layout_marginBottom="8dp"
         android:text="Item Name"
         android:textSize="24sp"
-        android:windowSoftInputMode="adjustResize"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -36,7 +35,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:windowSoftInputMode="adjustResize"
+
         android:layout_marginBottom="8dp"
         android:text="Shop Name"
         android:textSize="24sp"
@@ -58,7 +57,7 @@
         android:layout_marginBottom="8dp"
         android:text="Item Description"
         android:textSize="24sp"
-        android:windowSoftInputMode="adjustResize"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -73,7 +72,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:windowSoftInputMode="adjustResize"
+
         android:layout_marginBottom="8dp"
         android:text="Quantity"
         android:textSize="24sp"
@@ -89,7 +88,7 @@
         android:layout_width="385dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
-        android:windowSoftInputMode="adjustResize"
+
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -107,7 +106,7 @@
         android:layout_width="383dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
-        android:windowSoftInputMode="adjustResize"
+
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -130,12 +129,12 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/lblItemDesc"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblItemName"
-        app:layout_constraintVertical_bias="0.461" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.336" />
 
     <TextView
         android:id="@+id/txtShopName"
@@ -144,7 +143,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:windowSoftInputMode="adjustResize"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPersonName"

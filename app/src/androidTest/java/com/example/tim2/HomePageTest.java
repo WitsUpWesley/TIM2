@@ -131,14 +131,14 @@ public class HomePageTest {
         onView(withId(R.id.btnViewShops)).perform(click());
     }
 
-    @Test
+    /*@Test
     public void createShop() throws Exception {
 
         Bundle b = new Bundle();
         b.putString("username", "UnitTest");
         rule.launchActivity(new Intent().putExtras(b));
         onView(withId(R.id.btnCreateItem)).perform(click());
-    }
+    }*/
 
 }
 //Finished

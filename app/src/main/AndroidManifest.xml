@@ -32,6 +32,8 @@
         <activity android:name=".displayProduct"/>
         <activity android:name=".DeleteItem"/>
         <activity android:name=".searchProduct"/>
+        <activity android:name=".displayMyOrders" />
+        <activity android:name=".PlaceOrder" />
     </application>
 
 </manifest>

@@ -90,5 +90,12 @@ public class searchProduct extends AppCompatActivity{
         displaySearchedProducts(holder,c,sProductName);
 
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(searchProduct.this, HomePage.class);
+        intent.putExtra("username",username);
+        intent.putExtra("shopName",shopName);
+        startActivity(intent);
+    }
 
 }

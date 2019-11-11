@@ -29,25 +29,14 @@ public class Shop extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         Bundle extras = getIntent().getExtras();
         username = extras.getString("username");
         shopName = extras.getString("shopName");
-        setTitle("Productssss");
+        setTitle("Products");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop);
 
         ContentValues c = new ContentValues();
-        System.out.println("****************************************************");
-
-        System.out.println("****************************************************");
-
-        System.out.println("****************************************************");
-
-        System.out.println("****************************************************");
-
-        System.out.println("****************************************************");
 
         System.out.println(shopName);
         c.put("shopName",  shopName);
@@ -82,35 +71,29 @@ public class Shop extends AppCompatActivity {
 
                                final String tempName=    ((TextView) v.findViewById(R.id.displayedProduct)).getText().toString();
 
+
+
+
+                                goToPlaceOrder( tempName);
+
+
+
+                               /*
+
                                 Dialog dialog = new Dialog(v.getContext());
                                 dialog.setContentView(R.layout.place_order_dialog);
                                 ((TextView) (dialog.findViewById(R.id.productNameDialog)) ).setText(tempName);
 
                                 dialog.show();
-
-
-                              //   String notes=    ((EditText) dialog.findViewById(R.id.Order_notes)).getText().toString();
-
-                               // Toast.makeText(Shop.this,"notes: "+notes, Toast.LENGTH_SHORT).show();
-
-                                (dialog.findViewById(R.id.btnconfirmOrder)).setOnClickListener(new View.OnClickListener() {
+                                (dialog.findViewById(R.id.btnConfirmOrder)).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-
-                                      //  System.out.println(); ;
-                                      //  String notes=    ((EditText) v.findViewById(R.id.Order_notes)).getText().toString();
-
-
-                                        EditText text = (EditText)findViewById(R.id.Order_notes);
-
-                                        System.out.println("Log: "+text);
-
-                                    Log.d("placeOrderBtnClicked",  tempName);
-                                     //    Log.d("placeOrderBtnClicked",  text.getText().toString());
-
+                                         View test = v.inflate(v.getContext(), R.layout.place_order_dialog, null);
+                                        String text =((EditText)( test.findViewById(R.id.Order_notes))).getText().toString();
 
                                     }
                                 });
+                                */
 
                             }
                         });
@@ -121,6 +104,30 @@ public class Shop extends AppCompatActivity {
                 }
             }
         }.execute();
+    }
+
+
+
+    public void goToPlaceOrder(String tempName){
+
+
+        Intent intent = new Intent( Shop.this, PlaceOrder.class);
+        intent.putExtra("productName",tempName);
+        intent.putExtra("shopName",shopName);
+        intent.putExtra("userName",username);
+
+
+        startActivity(intent);
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Shop.this, displayShops.class);
+        intent.putExtra("username",username);
+      //  intent.putExtra("shopName",shopName);
+        startActivity(intent);
     }
 }
 

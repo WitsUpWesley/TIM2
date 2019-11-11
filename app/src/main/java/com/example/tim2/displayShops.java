@@ -77,6 +77,12 @@ public class displayShops extends AppCompatActivity {
         viewAnswersIntent.putExtra("shop", s);
         startActivity(viewAnswersIntent);
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(displayShops.this, HomePage.class);
+        intent.putExtra("username",username);
+       // intent.putExtra("shopName",shopName);
+        startActivity(intent);
+    }
 }
 

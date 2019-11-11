@@ -112,7 +112,13 @@ public class createShop extends AppCompatActivity {
             }
         }.execute();
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(createShop.this, HomePage.class);
+        intent.putExtra("username",username);
+        //intent.putExtra("shopName",shopName);
+        startActivity(intent);
+    }
 }
 
 

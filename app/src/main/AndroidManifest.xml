@@ -34,6 +34,7 @@
         <activity android:name=".searchProduct"/>
         <activity android:name=".displayMyOrders" />
         <activity android:name=".PlaceOrder" />
+        <activity android:name=".pop"/>
     </application>
 
 </manifest>

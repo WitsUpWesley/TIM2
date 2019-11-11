@@ -1,7 +1,6 @@
 package com.example.tim2;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
@@ -81,7 +80,6 @@ public class pop extends Activity{
                 }.execute();
 
                finish();
-
             }
         });
 
@@ -117,14 +115,5 @@ public class pop extends Activity{
             }
         }.execute();
 
-        //reload();
-
     }
-public void reload(){
-
-    Intent intent  = new Intent(pop.this, displayItems.class);
-    startActivity(intent);
-
-}
-
 }

@@ -40,10 +40,14 @@ public class HomePage extends AppCompatActivity {
 
                     JSONArray shops = new JSONArray(output);
                     if(shops.length() > 0){
+                        Button btnTemp2 = findViewById(R.id.btnCreateItem);
+                        btnTemp2.setVisibility(View.INVISIBLE);
                     }
                     else{
                         Button btnTemp = findViewById(R.id.btnViewOwnShop);
                         btnTemp.setVisibility(View.INVISIBLE);
+
+
 
                     }
                     //final JSONObject shop = shops.getJSONObject(0);

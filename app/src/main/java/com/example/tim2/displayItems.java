@@ -69,10 +69,11 @@ public class displayItems extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                                 intent.putExtra("itemName", itemName);
-                                intent.putExtra("shopName",shopName);
+                                intent.putExtra("shopName", shopName);
                                 startActivity(intent);
 
                             }
+
                         });
                     }
                 } catch (JSONException e) {

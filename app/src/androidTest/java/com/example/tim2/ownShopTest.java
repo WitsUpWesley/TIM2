@@ -85,6 +85,16 @@ public class ownShopTest {
         onView(withId(R.id.btnViewProducts)).perform(click());
     }
 
+    @Test
+    public void viewOrders() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "UnitTest");
+        b.putString("shopName", "UnitTestShop");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnViewShopOrders)).perform(click());
+    }
+
 
 
 }

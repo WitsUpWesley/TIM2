@@ -1,18 +1,17 @@
 package com.example.tim2;
-
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +35,8 @@ public class searchProduct extends AppCompatActivity{
 
     }
 
-    public void displaySearchedProducts(final LinearLayout holder, ContentValues cv, final String productName) {
+    @SuppressLint("StaticFieldLeak")
+    public void displaySearchedProducts(final LinearLayout holder, ContentValues cv,  final String productName2) {
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/searchProduct.php", cv) {
             @Override
             protected void onPostExecute(String output) {
@@ -55,6 +55,8 @@ public class searchProduct extends AppCompatActivity{
                         System.out.println(tester);
                         View v = View.inflate(holder.getContext(), R.layout.product, null);
 
+
+                      productName =shop.get("productName")+"";
                         ((TextView) v.findViewById(R.id.displayedProduct)).setText("Name: " + shop.getString("productName"));
                         shopName = shop.get("shopName")+"";
                         final String q =((TextView) v.findViewById(R.id.displayedProduct)).getText().toString();
@@ -63,6 +65,12 @@ public class searchProduct extends AppCompatActivity{
                             @Override
                             public void onClick(View v) {
                                 Intent intent = new Intent(searchProduct.this, PlaceOrder.class);
+
+                                Log.d("searchstuff","username"+username);
+                                Log.d("searchstuff","shopName"+shopName);
+                                Log.d("searchstuff","productName"+productName);
+
+
                                 intent.putExtra("userName",username);
                                 intent.putExtra("shopName",shopName);
                                 intent.putExtra("productName",productName);
@@ -81,8 +89,8 @@ public class searchProduct extends AppCompatActivity{
     }
 
     public void search(View v){
-        final EditText productName = findViewById(R.id.productName_edit_text);
-        String sProductName = productName.getText().toString().trim();
+         EditText productName3 = findViewById(R.id.productName_edit_text);
+        String sProductName = productName3.getText().toString().trim();
         System.out.println(sProductName);
         ContentValues c = new ContentValues();
         c.put("productName", sProductName); // need to get this value later

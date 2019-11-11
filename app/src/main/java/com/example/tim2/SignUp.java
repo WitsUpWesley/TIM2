@@ -2,6 +2,7 @@ package com.example.tim2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,7 +53,7 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    public static void signUp(final Context c , ContentValues cv){
+    public  void signUp(final Context c , ContentValues cv){
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/adduser.php", cv) {
             @Override
             protected void onPostExecute(String output) {
@@ -60,10 +61,15 @@ public class SignUp extends AppCompatActivity {
                 if(output.equals("1")){
                     Toast.makeText(c, "Your account has been successfully created", Toast.LENGTH_SHORT).show();
 
+
+                    Intent intent = new Intent( SignUp.this, LogInPage.class);
+                   // intent.putExtra("username",username);
+                    startActivity(intent);
+
                 }
 
                 else{
-                    Toast.makeText(c, "Usedname already exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(c, "Username already exists", Toast.LENGTH_SHORT).show();
                 }
             }
         }.execute();

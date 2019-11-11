@@ -1,5 +1,6 @@
 package com.example.tim2;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class displayShops extends AppCompatActivity {
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     public void displayShops(final LinearLayout holder, ContentValues cv) {
 
         new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getShops.php", cv) {

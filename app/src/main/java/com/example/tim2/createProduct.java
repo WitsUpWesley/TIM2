@@ -1,6 +1,7 @@
 package com.example.tim2;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -63,7 +64,7 @@ public class createProduct extends AppCompatActivity {
                     }
 
 
-                    System.out.println("hereeeeeeee_!_!_!_!_!_!_!_!__!!_!__!!_!__!_ "+  numItems.get(i));
+
                     cont.put("shopName",shopName);
                     cont.put("productName", proName);
                     cont.put("numItemsNeeded",  numItems.get(i));
@@ -102,10 +103,21 @@ public class createProduct extends AppCompatActivity {
                     protected void onPostExecute(String output) {
                         if(output.equals("1")){
                             Toast.makeText(createProduct.this,"Product added", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(createProduct.this, ownShop.class);
+                                intent.putExtra("username",username);
+                                intent.putExtra("shopName",shopName);
+                                startActivity(intent);
+
+
+
+
+
+
                         }
 
                         else{
-                            Toast.makeText(createProduct.this,"Failed, username exists", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(createProduct.this,"Failed, product exists", Toast.LENGTH_SHORT).show();
                         }
 
                     }

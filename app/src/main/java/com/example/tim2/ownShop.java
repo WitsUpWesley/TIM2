@@ -87,6 +87,16 @@ public class ownShop extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void viewShopOrders(View v) {
+        Intent intent = new Intent(ownShop.this, DisplayShopOrders.class);
+        intent.putExtra("username", username);
+        intent.putExtra("shopName", shopName);
+        startActivity(intent);
+    }
+
+
+
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(ownShop.this, HomePage.class);

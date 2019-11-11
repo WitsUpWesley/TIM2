@@ -34,7 +34,7 @@ public class displayMyOrders extends AppCompatActivity {
 
 
         ContentValues c = new ContentValues();
-        c.put("username", "a"); // need to get this value later
+        c.put("username", username); // need to get this value later
 
         LinearLayout holder = findViewById(R.id.productHolder);
 
@@ -52,32 +52,22 @@ public class displayMyOrders extends AppCompatActivity {
                 try {
                     JSONArray queryResult = new JSONArray(output);
 
-
-                    Log.d("displayOrder","in2"+queryResult.toString());
-
-
-
                     for (int i = 0; i < queryResult.length(); i++) {
                         final JSONObject orderResult = queryResult.getJSONObject(i);
-                        String tester = orderResult.toString();
-                        System.out.println("----");
-                        System.out.println(tester);
+
                         View v = View.inflate(holder.getContext(), R.layout.single_order, null);
-
-
-                        Log.d("displayOrder","in3");
 
                         ((TextView) v.findViewById(R.id.displayedOrderNo)).setText("Order Number: " + orderResult.getString("orderNo"));
                         ((TextView) v.findViewById(R.id.displayedOrder)).setText("Product: " + orderResult.getString("productName"));
-
                         ((TextView) v.findViewById(R.id.orderQuantityy)).setText("Quantity: " + orderResult.getString("quantity"));
-
-
-
-
                         ((TextView) v.findViewById(R.id.orderStatus)).setText("Order Status: " + orderResult.getString("status"));
-
                         ((TextView) v.findViewById(R.id.orderNotess)).setText("Order Notes: " + orderResult.getString("orderNotes"));
+
+
+
+
+
+
 
 
                        /* v.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +81,7 @@ public class displayMyOrders extends AppCompatActivity {
 
                             }
                         });*/
-                        System.out.println("working");
+
                         holder.addView(v);
                     }
                 } catch (JSONException e) {
@@ -99,7 +89,6 @@ public class displayMyOrders extends AppCompatActivity {
                 }
             }
         }.execute();
-
     }
 
     @Override

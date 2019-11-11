@@ -63,7 +63,7 @@ public class searchProduct extends AppCompatActivity{
                             @Override
                             public void onClick(View v) {
                                 Intent intent = new Intent(searchProduct.this, PlaceOrder.class);
-                                intent.putExtra("username",username);
+                                intent.putExtra("userName",username);
                                 intent.putExtra("shopName",shopName);
                                 intent.putExtra("productName",productName);
                                 startActivity(intent);

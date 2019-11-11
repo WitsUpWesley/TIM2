@@ -1,9 +1,13 @@
 package com.example.tim2;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -17,7 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class pop extends Activity {
+public class pop extends Activity{
     String shopName, itemName;
 
     @Override
@@ -25,7 +29,7 @@ public class pop extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.popwindow);
-        Bundle extras = getIntent().getExtras();
+        final Bundle extras = getIntent().getExtras();
 
         shopName = extras.getString("shopName");
         itemName = extras.getString("itemName");
@@ -57,7 +61,16 @@ public class pop extends Activity {
                                     int prevQuantity = Integer.parseInt(tester);
                                     int total = prevQuantity + Integer.parseInt(itemQuantity);
 
-                                    update(shopName, itemName, Integer.toString(total));
+                                    if(itemQuantity != null){
+                                        update(shopName, itemName, Integer.toString(total));
+                                    }
+
+                                    else if(itemQuantity == ""){
+
+                                        Toast.makeText(pop.this,"Missing field", Toast.LENGTH_SHORT).show();
+
+                                    }
+
                                 }
                             }
 
@@ -67,8 +80,9 @@ public class pop extends Activity {
                     }
                 }.execute();
 
-            }
+               finish();
 
+            }
         });
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -84,6 +98,7 @@ public class pop extends Activity {
         params.y = -20;
 
         getWindow().setAttributes(params);
+
     }
 
     public void update(String shopName, String itemName, String itemQuantity){
@@ -102,7 +117,14 @@ public class pop extends Activity {
             }
         }.execute();
 
+        //reload();
 
     }
+public void reload(){
+
+    Intent intent  = new Intent(pop.this, displayItems.class);
+    startActivity(intent);
+
+}
 
 }

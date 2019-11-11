@@ -71,6 +71,7 @@ public class displayItems extends AppCompatActivity {
                                 intent.putExtra("itemName", itemName);
                                 intent.putExtra("shopName",shopName);
                                 startActivity(intent);
+
                             }
                         });
                     }

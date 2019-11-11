@@ -130,6 +130,14 @@ public class HomePageTest {
         rule.launchActivity(new Intent().putExtras(b));
         onView(withId(R.id.btnViewShops)).perform(click());
     }
+    @Test
+    public void myOrders() throws Exception {
+
+        Bundle b = new Bundle();
+        b.putString("username", "UnitTest");
+        rule.launchActivity(new Intent().putExtras(b));
+        onView(withId(R.id.btnviewOrders)).perform(click());
+    }
 
     /*@Test
     public void createShop() throws Exception {

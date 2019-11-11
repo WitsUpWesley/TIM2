@@ -121,7 +121,7 @@ try{
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(PlaceOrder.this, Shop.class);
+        Intent intent = new Intent(PlaceOrder.this, HomePage.class);
         intent.putExtra("username",username);
         intent.putExtra("shopName",shopName);
         startActivity(intent);

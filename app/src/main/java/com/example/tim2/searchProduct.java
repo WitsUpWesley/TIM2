@@ -61,7 +61,7 @@ public class searchProduct extends AppCompatActivity{
                         v.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(searchProduct.this, Product.class);
+                                Intent intent = new Intent(searchProduct.this, PlaceOrder.class);
                                 intent.putExtra("username",username);
                                 intent.putExtra("shopName",shopName);
                                 intent.putExtra("productName",productName);

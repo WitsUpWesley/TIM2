@@ -82,11 +82,11 @@ public class pop extends Activity{
 
                 finish();
 
-                Intent intent = new Intent(pop.this, HomePage.class);
+               /* Intent intent = new Intent(pop.this, HomePage.class);
                 intent.putExtra("shopname", shopName);
                 System.out.println("++++++++++++++++++++++++++++++++++++" + userName);
                 intent.putExtra("username", userName);
-                startActivity(intent);
+                startActivity(intent);*/
 
             }
         });
@@ -97,7 +97,7 @@ public class pop extends Activity{
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8), (int)(height*.3));
+        getWindow().setLayout((int)(width*.8), (int)(height*.45));
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;

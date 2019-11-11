@@ -72,6 +72,8 @@ public class displayItems extends AppCompatActivity {
                                 intent.putExtra("username", username);
                                 startActivity(intent);
 
+                                finish();
+
                             }
 
                         });

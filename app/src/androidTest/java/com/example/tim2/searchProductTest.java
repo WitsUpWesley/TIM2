@@ -24,24 +24,37 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
-public class createShopTest {
+public class searchProductTest {
     @Rule
-    public ActivityTestRule rule=new ActivityTestRule(createShop.class,true,false);
+    public ActivityTestRule rule=new ActivityTestRule(searchProduct.class,true,false);
 
-    String username="a";
-    String storeName="Caves";
+    String username="UnitTest";
+    String shopName="UnitTestShop";
+    String productName="UnitTestProduct";
 
-    /*@Test//
-    public void createShop() throws Exception{
+    @Test
+    public void btnTextView() throws Exception{
+        rule.launchActivity(new Intent().putExtra(username,"UnitTest").putExtra(shopName,"UnitTestShop").putExtra(productName,"UnitTestProduct"));
+        onView(withId(R.id.textView)).check(matches(withText("Please enter the product you are searching for.")));
+    }
+
+    @Test
+    public void btnDelete() throws Exception{
+        rule.launchActivity(new Intent().putExtra(username,"UnitTest").putExtra(shopName,"UnitTestShop").putExtra(productName,"UnitTestProduct"));
+        onView(withId(R.id.btnDelete)).check(matches(withText("Search Product")));
+    }
+
+    @Test//
+    public void searchProduct() throws Exception{
         Bundle b = new Bundle();
-        b.putString("username", "UnitTest");
-        b.putString("shopName", "Caves");
+        b.putString("username", username);
+        b.putString("shopName", shopName);
+        b.putString("productName", productName);
         rule.launchActivity(new Intent().putExtras(b));
-        onView(withId(R.id.txtName)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
-        onView(withId(R.id.txtDesc)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
-        onView(withId(R.id.txtType)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
-        onView(withId(R.id.btnAddShop)).perform(click());
-    }*/
+        onView(withId(R.id.productName_edit_text)).perform(typeText("UnitTestProduct"),closeSoftKeyboard());
+        onView(withId(R.id.btnDelete)).perform(click());
+    }
 
 
 }
+//Finished

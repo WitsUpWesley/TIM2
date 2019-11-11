@@ -21,7 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class pop extends Activity{
-    String shopName, itemName;
+    String shopName, itemName, userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -32,6 +32,7 @@ public class pop extends Activity{
 
         shopName = extras.getString("shopName");
         itemName = extras.getString("itemName");
+        userName = extras.getString("username");
 
         TextView itemNameTextView = findViewById(R.id.itemNameTextView);
         itemNameTextView.setText(itemName);
@@ -80,6 +81,11 @@ public class pop extends Activity{
                 }.execute();
 
                 finish();
+
+                Intent intent = new Intent(pop.this, ownShop.class);
+                intent.putExtra("shopname", shopName);
+                intent.putExtra("username", userName);
+                startActivity(intent);
 
             }
         });

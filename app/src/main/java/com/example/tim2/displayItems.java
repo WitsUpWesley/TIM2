@@ -35,7 +35,7 @@ public class displayItems extends AppCompatActivity {
         shopName = extras.getString("shopName");
 
         ContentValues c = new ContentValues();
-        c.put("shopName", shopName); // need to g et this value later
+        c.put("shopName", shopName);
 
         LinearLayout holder = findViewById(R.id.itemHolder);
         displayItems(holder, c);
@@ -70,6 +70,7 @@ public class displayItems extends AppCompatActivity {
                                 }
                                 intent.putExtra("itemName", itemName);
                                 intent.putExtra("shopName", shopName);
+                                intent.putExtra("username", username);
                                 startActivity(intent);
 
                             }

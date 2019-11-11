@@ -8,7 +8,7 @@ android:layout_height="wrap_content">
 
 
     <TextView
-        android:id="@+id/palceOrderTitle"
+        android:id="@+id/placeOrderTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
@@ -17,7 +17,7 @@ android:layout_height="wrap_content">
         android:layout_marginBottom="4dp"
         android:ems="10"
         android:inputType="none"
-        android:text="Place an order"
+        android:text="Order for: "
         android:textSize="24sp" />
     <TextView
         android:id="@+id/productNameDialog"
@@ -28,6 +28,7 @@ android:layout_height="wrap_content">
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
         android:ems="10"
+
         android:inputType="none"
         android:text=""
         android:textSize="24sp" />
@@ -45,21 +46,21 @@ android:layout_height="wrap_content">
   />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/orderQuantityyyy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:digits="0123456789"
-
+        android:ems="10"
+        android:hint="Order Quantity"
         android:inputType="number"
-        android:hint="Order Quantity"/>
+        android:text="1" />
 
     <Button
-        android:id="@+id/btnconfirmOrder"
+        android:id="@+id/btnConfirmOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Confirm Order"
-
+        android:onClick="placeOrder"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"

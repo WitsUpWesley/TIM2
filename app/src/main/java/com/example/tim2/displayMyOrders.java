@@ -6,6 +6,7 @@ package com.example.tim2;
         import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.View;
         import android.widget.LinearLayout;
         import android.widget.TextView;
@@ -17,24 +18,23 @@ package com.example.tim2;
 
 
 public class displayMyOrders extends AppCompatActivity {
-    String username,shopName;
+    String username;
 
     //@SuppressLint("StaticFieldLeak")
     @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Products");
+        setTitle("My Orders");
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
 
-        setContentView(R.layout.displayshops);
+        setContentView(R.layout.orders);
 
         username = extras.getString("username");
-        shopName = extras.getString("shopName");
-        System.out.println(shopName);
+
 
         ContentValues c = new ContentValues();
-        c.put("shopName", shopName); // need to get this value later
+        c.put("username", "a"); // need to get this value later
 
         LinearLayout holder = findViewById(R.id.productHolder);
 
@@ -44,11 +44,19 @@ public class displayMyOrders extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     public void displayOrders(final LinearLayout holder, ContentValues cv) {
-        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/t.php", cv) {
+
+        Log.d("displayOrder","in");
+        new AsyncHttpPost("http://lamp.ms.wits.ac.za/~s1355485/getMyOrders.php", cv) {
             @Override
             protected void onPostExecute(String output) {
                 try {
                     JSONArray queryResult = new JSONArray(output);
+
+
+                    Log.d("displayOrder","in2"+queryResult.toString());
+
+
+
                     for (int i = 0; i < queryResult.length(); i++) {
                         final JSONObject orderResult = queryResult.getJSONObject(i);
                         String tester = orderResult.toString();
@@ -56,12 +64,21 @@ public class displayMyOrders extends AppCompatActivity {
                         System.out.println(tester);
                         View v = View.inflate(holder.getContext(), R.layout.single_order, null);
 
-                        ((TextView) v.findViewById(R.id.displayedOrder)).setText("Name: " + orderResult.getString("productName"));
-                    //    final String q =((TextView) v.findViewById(R.id.displayedOrder)).getText().toString();
+
+                        Log.d("displayOrder","in3");
+
+                        ((TextView) v.findViewById(R.id.displayedOrderNo)).setText("Order Number: " + orderResult.getString("orderNo"));
+                        ((TextView) v.findViewById(R.id.displayedOrder)).setText("Product: " + orderResult.getString("productName"));
+
+                        ((TextView) v.findViewById(R.id.orderQuantityy)).setText("Quantity: " + orderResult.getString("quantity"));
 
 
-                        ((TextView) v.findViewById(R.id.displayedOrder)).setText("Order Status: " + orderResult.getString("orderStatus"));
-                      //  final String q =((TextView) v.findViewById(R.id.displayedOrder)).getText().toString();
+
+
+                        ((TextView) v.findViewById(R.id.orderStatus)).setText("Order Status: " + orderResult.getString("status"));
+
+                        ((TextView) v.findViewById(R.id.orderNotess)).setText("Order Notes: " + orderResult.getString("orderNotes"));
+
 
                        /* v.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -82,5 +99,14 @@ public class displayMyOrders extends AppCompatActivity {
                 }
             }
         }.execute();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(displayMyOrders.this, HomePage.class);
+        intent.putExtra("username",username);
+      //  intent.putExtra("shopName",shopName);
+        startActivity(intent);
     }
 }

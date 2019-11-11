@@ -120,5 +120,25 @@ public class HomePage extends AppCompatActivity {
         intent.putExtra("username",username);
         startActivity(intent);
     }
+
+
+
+    @SuppressLint("StaticFieldLeak")
+    public void viewMyOrders(View v){
+
+
+        Intent intent = new Intent( HomePage.this, displayMyOrders.class);
+        intent.putExtra("username",username);
+        startActivity(intent);
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(HomePage.this, LogInPage.class);
+        //intent.putExtra("username",username);
+    startActivity(intent);
+    }
 }
 

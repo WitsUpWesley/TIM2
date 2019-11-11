@@ -33,6 +33,10 @@
         <activity android:name=".Product"/>
         <activity android:name=".DeleteItem"/>
         <activity android:name=".searchProduct"/>
+        <activity android:name=".displayMyOrders" />
+        <activity android:name=".PlaceOrder" />
+        <activity android:name=".pop"
+            android:theme="@style/AppTheme.CustomTheme"/>
     </application>
 
 </manifest>

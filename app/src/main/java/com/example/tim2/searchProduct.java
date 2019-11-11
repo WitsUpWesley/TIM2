@@ -56,6 +56,7 @@ public class searchProduct extends AppCompatActivity{
                         View v = View.inflate(holder.getContext(), R.layout.product, null);
 
                         ((TextView) v.findViewById(R.id.displayedProduct)).setText("Name: " + shop.getString("productName"));
+                        shopName = shop.get("shopName")+"";
                         final String q =((TextView) v.findViewById(R.id.displayedProduct)).getText().toString();
 
                         v.setOnClickListener(new View.OnClickListener() {

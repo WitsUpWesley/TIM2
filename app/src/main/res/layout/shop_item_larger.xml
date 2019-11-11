@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/displayedItem"
-        android:layout_width="380dp"
-        android:layout_height="106dp"
+        android:layout_width="338dp"
+        android:layout_height="113dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

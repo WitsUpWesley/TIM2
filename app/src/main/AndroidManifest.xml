@@ -37,7 +37,8 @@
         <activity android:name=".pop"
             android:theme="@style/AppTheme.CustomTheme"/>
         <activity android:name=".DisplayShopOrders" />
-        <activity android:name=".OrderManagerPopup" />
+        <activity android:name=".OrderManagerPopup"
+            android:theme="@style/AppTheme.CustomTheme"/>
     </application>
 
 </manifest>

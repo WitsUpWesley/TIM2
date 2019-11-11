@@ -33,7 +33,6 @@ public class OrderManagerPopup extends Activity {
 
         setContentView(R.layout.shop_order_manager);
 
-
         final Bundle extras = getIntent().getExtras();
        // shopName = extras.getString("shopName");
         status = extras.getString("status");

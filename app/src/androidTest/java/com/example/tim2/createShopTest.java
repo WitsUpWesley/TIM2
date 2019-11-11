@@ -79,7 +79,7 @@ public class createShopTest {
         onView(withId(R.id.btnAddShop)).check(matches(withText("ADD SHOP")));
     }
 
-    @Test//
+    /*@Test//
     public void createShop() throws Exception{
         Bundle b = new Bundle();
         b.putString("username", "UnitTest");
@@ -89,7 +89,7 @@ public class createShopTest {
         onView(withId(R.id.txtDesc)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
         onView(withId(R.id.txtType)).perform(typeText("UnitTestShop"),closeSoftKeyboard());
         onView(withId(R.id.btnAddShop)).perform(click());
-    }
+    }*/
 
 
 }
